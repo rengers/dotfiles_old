@@ -188,8 +188,10 @@ set gfn=Bitstream\ Vera\ Sans\ Mono\ 9
 
 if has("gui_running")
   set guioptions-=T
+  set guioptions+=e
   set t_Co=256
   set background=dark
+  set guitablabel=%M\ %t
   "colorscheme peaksea
   colorscheme skittles_dark
   set nonu
