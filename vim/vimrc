@@ -12,14 +12,14 @@
 "       http://amix.dk/vim/vimrc.txt
 "
 " How_to_Install_on_Unix:
-"    $ mkdir ~/.vim_runtime
+"    $ mkdir ~/.vim
 "    $ svn co svn://orangoo.com/vim ~/.vim_runtime
-"    $ cat ~/.vim_runtime/install.sh
-"    $ sh ~/.vim_runtime/install.sh <system>
+"    $ cat ~/.vim/install.sh
+"    $ sh ~/.vim/install.sh <system>
 "      <sytem> can be `mac`, `linux` or `windows`
 "
 " How_to_Upgrade:
-"    $ svn update ~/.vim_runtime
+"    $ svn update ~/.vim
 "
 " Sections:
 "    -> General
@@ -98,7 +98,7 @@ filetype plugin on
 filetype indent on
 
 " Pathogen load
-call pathogen#infect('~/.vim/bundle')
+call pathogen#infect()
 
 
 " Set to auto read when a file is changed from the outside
@@ -114,16 +114,16 @@ nmap <leader>w :w!<cr>
 
 if MySys() == "windows"
     " Fast editing of the .vimrc
-    map <leader>e :e! ~/_vim_runtime/vimrc<cr>
+    map <leader>e :e! ~/_vim/vimrc<cr>
 
     " When vimrc is edited, reload it
-    autocmd! bufwritepost vimrc source ~/_vim_runtime/vimrc
+    autocmd! bufwritepost vimrc source ~/_vim/vimrc
 else
     " Fast editing of the .vimrc
-    map <leader>e :e! ~/.vim_runtime/vimrc<cr>
+    map <leader>e :e! ~/.vim/vimrc<cr>
 
     " When vimrc is edited, reload it
-    autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
+    autocmd! bufwritepost vimrc source ~/.vim/vimrc
 endif
 
 " Set the cwd to the current file
@@ -227,7 +227,7 @@ try
     if MySys() == "windows"
       set undodir=C:\Windows\Temp
     else
-      set undodir=~/.vim_runtime/undodir
+      set undodir=~/.vim/undodir
     endif
     
     set undofile
