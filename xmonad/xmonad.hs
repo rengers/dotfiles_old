@@ -45,8 +45,8 @@ myStatusBar = "conky -c /home/ross/.xmonad/.conky_dzen | dzen2 -x '770' -w '1000
 myBitmapsDir = "/home/ross/.xmonad/dzen2"
 
 --Workspace names
-myWorkspaces :: [String]
-myWorkspaces = clickable . (map dzenEscape) $ ["1:main", "2:web", "3:vim", "4:chat", "5:music", "6:other", "7:shed", "8:theatre"]
+myWorkspaces :: [WorkspaceId]
+myWorkspaces = clickable . (map dzenEscape) $ ["1:main", "2:web", "3:vim", "4:chat", "5:music", "6:other", "7:shed", "8:theatre", "9:cinema"]
   where clickable l     = [ "^ca(1,xdotool key super+" ++ show (n) ++ ")" ++ ws ++ "^ca()" |
                             (i,ws) <- zip [1..] l,
                             let n = i ]
@@ -96,6 +96,7 @@ manageHook' = (composeAll . concat $
     , [className    =? c            --> doShift  "6:other"  |   c   <- myOther  ] -- move img to div
     , [className    =? c            --> doShift  "7:shed"   |   c   <- myShed   ] -- move img to div
     , [className    =? c            --> doShift  "8:theatre"|   c   <- myTheatre] -- move img to div
+    , [className    =? c            --> doShift  "9:cinema" |   c   <- myCinema ] -- move img to div
     , [className    =? c            --> doCenterFloat       |   c   <- myFloats ] -- float my floats
     , [name         =? n            --> doCenterFloat       |   n   <- myNames  ] -- float my names
     , [isFullscreen                 --> myDoFullFloat                           ]
@@ -111,6 +112,7 @@ manageHook' = (composeAll . concat $
         myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor"]
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser"]
         myTheatre = ["Boxee","Trine"]
+        myCinema  = ["Vlc"]
         myMusic	  = ["Rhythmbox","Spotify"]
         myChat	  = ["Pidgin","Buddy List"]
         myOther	  = ["Gimp"]
@@ -128,11 +130,36 @@ manageHook' = (composeAll . concat $
 myDoFullFloat :: ManageHook
 myDoFullFloat = doF W.focusDown <+> doFullFloat
 -- }}}
-layoutHook'  =  onWorkspaces ["1:main","5:music"] customLayout $ 
-                onWorkspaces ["6:other"] gimpLayout $ 
-                onWorkspaces ["4:chat"] imLayout $
-                onWorkspaces ["8:theatre"] theatreLayout $
-                customLayout2
+
+-- Layout
+customLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
+  where
+    tiled   = ResizableTall 1 (2/100) (1/2) []
+ 
+customLayout2 = smartBorders $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
+  where
+    tiled   = ResizableTall 1 (2/100) (1/2) []
+ 
+theatreLayout = fullscreenFull $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
+  where
+    tiled   = ResizableTall 1 (2/100) (1/2) []
+ 
+cinemaLayout = noBorders $ Full ||| simpleFloat 
+
+gimpLayout  = avoidStruts $ withIM (0.11) (Role "gimp-toolbox") $
+              reflectHoriz $
+              withIM (0.15) (Role "gimp-dock") Full
+ 
+imLayout    = avoidStruts $ withIM (1%5) (And (ClassName "Pidgin") (Role "buddy_list")) Grid 
+ --}}}
+
+layoutHook'  =  id
+                $ onWorkspaces ["1:main","5:music"] customLayout
+                $ onWorkspace "6:other" gimpLayout  
+                $ onWorkspace "4:chat" imLayout 
+                $ onWorkspace "8:theatre" theatreLayout 
+                $ onWorkspace "9:cinema" cinemaLayout 
+                $ customLayout2
 
 --Bar
 myLogHook :: Handle -> X ()
@@ -160,24 +187,6 @@ myLogHook h = dynamicLogWithPP $ defaultPP
     }
  
 
--- Layout
-customLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
-  where
-    tiled   = ResizableTall 1 (2/100) (1/2) []
- 
-customLayout2 = avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
-  where
-    tiled   = ResizableTall 1 (2/100) (1/2) []
- 
-theatreLayout = fullscreenFull $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
-  where
-    tiled   = ResizableTall 1 (2/100) (1/2) []
 
-gimpLayout  = avoidStruts $ withIM (0.11) (Role "gimp-toolbox") $
-              reflectHoriz $
-              withIM (0.15) (Role "gimp-dock") Full
- 
-imLayout    = avoidStruts $ withIM (1%5) (And (ClassName "Pidgin") (Role "buddy_list")) Grid 
- --}}}
  
  
