@@ -1,8 +1,8 @@
 # Ignore all files in the undodir
-vim_runtime/undodir/*
+vim/undodir/*
 
 # Ignore the xmonad binary
 xmonad/xmonad-x86_64-linux
 
 # For the moment actually ignore everying
-*
+#*
