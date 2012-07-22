@@ -126,6 +126,9 @@ else
     autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
 endif
 
+" Set the cwd to the current file
+set autochdir
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -236,8 +239,9 @@ endtry
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set smarttab
 
 set lbr
