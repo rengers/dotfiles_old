@@ -99,7 +99,7 @@ filetype indent on
 
 " Pathogen load
 call pathogen#infect()
-
+call pathogen#helptags()
 
 " Set to auto read when a file is changed from the outside
 set autoread
