@@ -3,6 +3,7 @@ vim/undodir/*
 
 # Ignore the xmonad binary
 xmonad/xmonad-x86_64-linux
+xmonad/xmonad.o
 
 # For the moment actually ignore everying
 #*
