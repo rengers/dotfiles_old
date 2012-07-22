@@ -98,7 +98,7 @@ filetype plugin on
 filetype indent on
 
 " Pathogen load
-call pathogen#infect('~/.vim_runtime/bundle')
+call pathogen#infect('~/.vim/bundle')
 
 
 " Set to auto read when a file is changed from the outside
