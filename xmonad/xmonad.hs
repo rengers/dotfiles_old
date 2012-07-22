@@ -78,8 +78,9 @@ main = do
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
-        , ((0                     , 0x1008FF11), spawn "amixer set Master 2-")
-        , ((0                     , 0x1008FF13), spawn "amixer set Master 2+")
+        , ((0                   , 0x1008FF11), spawn "amixer set Master 2-")
+        , ((0                   , 0x1008FF13), spawn "amixer set Master 2+")
+        , ((mod4Mask            , xK_Down),    swapNextScreen)
         ]
 
 
