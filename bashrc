@@ -119,7 +119,7 @@ alias broadb_='cd /home/ross/Documents/UCT\ 2012/EEE4087F\ -\ Mobile\ Broadband/
 ###
 # Shortcuts to access git
 alias g='git'
-alias gd='git diff'
+alias gd='git diff --color'
 alias gc='git commit'
 alias ga='git add'
 alias gs='git status'
