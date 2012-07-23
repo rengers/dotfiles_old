@@ -1,25 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: amix the lucky stiff
-"             http://amix.dk - amix@amix.dk
-"
-" Version: 3.6 - 25/08/10 14:40:30
-"
-" Blog_post: 
-"       http://amix.dk/blog/post/19486#The-ultimate-vim-configuration-vimrc
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
-" How_to_Install_on_Unix:
-"    $ mkdir ~/.vim
-"    $ svn co svn://orangoo.com/vim ~/.vim_runtime
-"    $ cat ~/.vim/install.sh
-"    $ sh ~/.vim/install.sh <system>
-"      <sytem> can be `mac`, `linux` or `windows`
-"
-" How_to_Upgrade:
-"    $ svn update ~/.vim
+" Ross' vimrc
 "
 " Sections:
 "    -> General
@@ -73,16 +53,6 @@
 "       Command-T plug-in provides an extremely fast, intuitive mechanism for opening filesa:
 "           info -> :help CommandT
 "           screencast and web-help -> http://amix.dk/blog/post/19501
-"
-"
-"  Revisions:
-"     > 3.6: Added lots of stuff (colors, Command-T, Vim 7.3 persistent undo etc.)
-"     > 3.5: Paste mode is now shown in status line  if you are in paste mode
-"     > 3.4: Added mru.vim
-"     > 3.3: Added syntax highlighting for Mako mako.vim 
-"     > 3.2: Turned on python_highlight_all for better syntax
-"            highlighting for Python
-"     > 3.1: Added revisions ;) and bufexplorer.vim
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -190,8 +160,10 @@ set gfn=Bitstream\ Vera\ Sans\ Mono\ 9
 
 
 if has("gui_running")
-  set guioptions-=T
-  set guioptions+=e
+  set guioptions-=T "No toolbar
+  set guioptions-=e "Don't use gui tabline
+  set guioptions-=m "No menubar
+  
   set t_Co=256
   set background=dark
   set guitablabel=%M\ %t
@@ -199,7 +171,7 @@ if has("gui_running")
   colorscheme skittles_dark
   set nonu
 else
-  colorscheme zellner
+  "colorscheme zellner
   colorscheme peaksea
   set background=dark
   set nonu
@@ -418,7 +390,7 @@ endfunction
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=usetab
-  set stal=2
+  set stal=1
 catch
 endtry
 
