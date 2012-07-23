@@ -28,3 +28,6 @@
 [submodule "vim/bundle/MatlabFilesEdition"]
 	path = vim/bundle/MatlabFilesEdition
 	url = git://github.com/vim-scripts/MatlabFilesEdition
+[submodule "vim/bundle/YankRing"]
+	path = vim/bundle/YankRing
+	url = git://github.com/vim-scripts/YankRing.vim.git
