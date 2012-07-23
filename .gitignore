@@ -1,6 +1,9 @@
 # Ignore all files in the undodir
 vim/undodir/*
 
+# Ignore vim/doc/tags
+vim/doc/tags
+
 # Ignore the xmonad binary
 xmonad/xmonad-x86_64-linux
 xmonad/xmonad.o
