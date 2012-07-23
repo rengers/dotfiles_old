@@ -1,12 +1,18 @@
+# Vim related
 # Ignore all files in the undodir
 vim/undodir/*
 
 # Ignore vim/doc/tags
 vim/doc/tags
 
+.netrwhist
+*.swp
+*~
+
+#########################################
+
+# Xmonad
 # Ignore the xmonad binary
 xmonad/xmonad-x86_64-linux
 xmonad/xmonad.o
 
-# For the moment actually ignore everying
-#*
