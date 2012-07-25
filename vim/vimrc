@@ -65,7 +65,7 @@ set history=700
 
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
-"call add(g:pathogen_disabled, 'FuzzyFinder')
+call add(g:pathogen_disabled, 'pyflakes-vim')
 
 " Pathogen load
 call pathogen#infect()
@@ -673,5 +673,9 @@ set mouse=a
 """""""""""""""""""""""""""""
 " Ross added plugins
 """""""""""""""""""""""""""""
-""" syntastic:
+
+""" Syntastic:
 map <leader>st :SyntasticToggleMode<cr>
+
+" Only show errors not warnings
+let g:syntastic_quiet_warnings=1
