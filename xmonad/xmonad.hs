@@ -29,6 +29,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.LayoutHints
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.Grid
+import XMonad.Layout.ToggleLayouts
 
 import Data.Ratio ((%))
 
@@ -50,6 +51,17 @@ myWorkspaces = clickable . (map dzenEscape) $ ["1:main", "2:web", "3:vim", "4:ch
   where clickable l     = [ "^ca(1,xdotool key super+" ++ show (n) ++ ")" ++ ws ++ "^ca()" |
                             (i,ws) <- zip [1..] l,
                             let n = i ]
+
+-- Set workspace names
+mainWs      = (myWorkspaces !! 0)
+webWs      = (myWorkspaces !! 1)
+vimWs       = (myWorkspaces !! 2)
+chatWs     = (myWorkspaces !! 3)
+musicWs     = (myWorkspaces !! 4)
+otherWs     = (myWorkspaces !! 5)
+shedWs      = (myWorkspaces !! 6)
+theatreWs   = (myWorkspaces !! 7)
+cinemaWs    = (myWorkspaces !! 8)
 
 -- Set border colours
 myFocusedBorderColor = "#33cc33"
@@ -81,6 +93,7 @@ main = do
         , ((0                   , 0x1008FF11), spawn "amixer set Master 2-")
         , ((0                   , 0x1008FF13), spawn "amixer set Master 2+")
         , ((mod4Mask            , xK_Down),    swapNextScreen)
+        , ((mod4Mask            , xK_f),        sendMessage ToggleLayout)
         ]
 
 
@@ -89,16 +102,16 @@ main = do
 manageHook' :: ManageHook
 manageHook' = (composeAll . concat $
     [ [resource     =? r            --> doIgnore            |   r   <- myIgnores] -- ignore desktop
-    , [className    =? c            --> doShift  "1:main"   |   c   <- myDev    ] -- move dev to main
-    , [className    =? c            --> doShift  "2:web"    |   c   <- myWebs   ] -- move webs to main
-    , [className    =? c            --> doShift  "3:vim"    |   c   <- myVim    ] -- move webs to main
-    , [className    =? c            --> doShift	 "4:chat"   |   c   <- myChat   ] -- move chat to chat
-    , [className    =? c            --> doShift  "5:music"  |   c   <- myMusic  ] -- move music to music
-    , [className    =? c            --> doShift  "6:other"  |   c   <- myOther  ] -- move img to div
-    , [className    =? c            --> doShift  "7:shed"   |   c   <- myShed   ] -- move img to div
-    , [className    =? c            --> doShift  "8:theatre"|   c   <- myTheatre] -- move img to div
-    , [className    =? c            --> doShift  "9:cinema" |   c   <- myCinema ] -- move img to div
-    , [className    =? c            --> doCenterFloat       |   c   <- myFloats ] -- float my floats
+    , [className    =? d            --> doShift  mainWs     |   d   <- myDev    ] -- move dev to main
+    , [className    =? w            --> doShift  webWs      |   w   <- myWebs   ] -- move webs to main
+    , [className    =? v            --> doShift  vimWs      |   v   <- myVim    ] -- move webs to main
+    , [className    =? c            --> doShift	 chatWs     |   c   <- myChat   ] -- move chat to chat
+    , [className    =? m            --> doShift  musicWs    |   m   <- myMusic  ] -- move music to music
+    , [className    =? o            --> doShift  otherWs    |   o   <- myOther  ] -- move img to div
+    , [className    =? s            --> doShift  shedWs     |   s   <- myShed   ] -- move img to div
+    , [className    =? t            --> doShift  theatreWs  |   t   <- myTheatre] -- move img to div
+    , [className    =? p            --> doShift  cinemaWs   |   p   <- myCinema ] -- move img to div
+    , [className    =? f            --> doCenterFloat       |   f   <- myFloats ] -- float my floats
     , [name         =? n            --> doCenterFloat       |   n   <- myNames  ] -- float my names
     , [isFullscreen                 --> myDoFullFloat                           ]
     , [ manageDocks ]
@@ -119,7 +132,7 @@ manageHook' = (composeAll . concat $
         myOther	  = ["Gimp"]
         myShed    = []
         myDev	  = ["gnome-terminal"]
-        myVim	  = ["Gvim"]
+        myVim	  = ["gvim"] -- Spelt wrong on purpose
  
         -- resources
         myIgnores = ["desktop","desktop_window","notify-osd","stalonetray","trayer"]
@@ -133,11 +146,11 @@ myDoFullFloat = doF W.focusDown <+> doFullFloat
 -- }}}
 
 -- Layout
-customLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
+customLayout = smartBorders $ toggleLayouts ( avoidStruts $ Full ) $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
  
-customLayout2 = smartBorders $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
+customLayout2 = smartBorders $ toggleLayouts (avoidStruts $ Full ) $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
  
@@ -155,11 +168,11 @@ imLayout    = avoidStruts $ withIM (1%5) (And (ClassName "Pidgin") (Role "buddy_
  --}}}
 
 layoutHook'  =  id
-                $ onWorkspaces ["1:main","5:music"] customLayout
-                $ onWorkspace "6:other" gimpLayout  
-                $ onWorkspace "4:chat" imLayout 
-                $ onWorkspace "8:theatre" theatreLayout 
-                $ onWorkspace "9:cinema" cinemaLayout 
+                $ onWorkspaces [mainWs,musicWs] customLayout
+                $ onWorkspace otherWs gimpLayout  
+                $ onWorkspace chatWs imLayout 
+                $ onWorkspace theatreWs theatreLayout 
+                $ onWorkspace cinemaWs cinemaLayout 
                 $ customLayout2
 
 --Bar
