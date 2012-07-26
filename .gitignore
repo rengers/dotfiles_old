@@ -15,4 +15,5 @@ vim/doc/tags
 # Ignore the xmonad binary
 xmonad/xmonad-x86_64-linux
 xmonad/xmonad.o
+xmonad/xmonad.hi
 

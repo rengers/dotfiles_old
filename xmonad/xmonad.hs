@@ -146,11 +146,11 @@ myDoFullFloat = doF W.focusDown <+> doFullFloat
 -- }}}
 
 -- Layout
-customLayout = smartBorders $ toggleLayouts ( avoidStruts $ Full ) $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
+customLayout = smartBorders $ avoidStruts $ toggleLayouts Full  $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
  
-customLayout2 = smartBorders $ toggleLayouts (avoidStruts $ Full ) $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
+customLayout2 = smartBorders $ avoidStruts $ toggleLayouts Full  $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
  
