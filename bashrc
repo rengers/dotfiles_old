@@ -134,3 +134,7 @@ complete -o default -o nospace -F _git g
 # History grep and update
 alias h='history|grep'
 alias hu='history -n'
+
+# SSH-Agent
+eval `ssh-agent` > /dev/null
+alias ssh='ssh-add -l || ssh-add && ssh' # Add ssh-keys to agent on demand
