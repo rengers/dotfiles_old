@@ -136,5 +136,5 @@ alias h='history|grep'
 alias hu='history -n'
 
 # SSH-Agent
-eval `ssh-agent -t 1800` > /dev/null
+#eval `ssh-agent -t 1800` > /dev/null
 alias ssh='ssh-add -l || ssh-add && ssh' # Add ssh-keys to agent on demand

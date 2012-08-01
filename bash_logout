@@ -1,7 +1,7 @@
 # ~/.bash_logout: executed by bash(1) when login shell exits.
 
 # Kill the current ssh-agent
-ssh-agent -k > /dev/null
+#ssh-agent -k > /dev/null
 
 
 # when leaving the console clear the screen to increase privacy
