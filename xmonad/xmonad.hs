@@ -124,7 +124,7 @@ manageHook' = (composeAll . concat $
  
         -- classnames
         myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor"]
-        myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser"]
+        myWebs    = ["Firefox","Google-chrome"]
         myTheatre = ["Boxee","Trine"]
         myCinema  = ["Vlc"]
         myMusic	  = ["Rhythmbox","Spotify"]
@@ -132,7 +132,7 @@ manageHook' = (composeAll . concat $
         myOther	  = ["Gimp"]
         myShed    = []
         myDev	  = ["gnome-terminal"]
-        myVim	  = ["gvim"] -- Spelt wrong on purpose
+        myVim	  = [] 
  
         -- resources
         myIgnores = ["desktop","desktop_window","notify-osd","stalonetray","trayer"]
@@ -160,16 +160,15 @@ theatreLayout = fullscreenFull $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
  
 cinemaLayout = noBorders $ Full ||| simpleFloat 
 
-gimpLayout  = avoidStruts $ withIM (0.11) (Role "gimp-toolbox") $
-              reflectHoriz $
-              withIM (0.15) (Role "gimp-dock") Full
+--gimpLayout  = avoidStruts $ withIM (0.11) (Role "gimp-toolbox") $
+ --             reflectHoriz $
+  --            withIM (0.15) (Role "gimp-dock") Full
  
 imLayout    = avoidStruts $ withIM (1%5) (And (ClassName "Pidgin") (Role "buddy_list")) Grid 
  --}}}
 
 layoutHook'  =  id
                 $ onWorkspaces [mainWs,musicWs] customLayout
-                $ onWorkspace otherWs gimpLayout  
                 $ onWorkspace chatWs imLayout 
                 $ onWorkspace theatreWs theatreLayout 
                 $ onWorkspace cinemaWs cinemaLayout 
