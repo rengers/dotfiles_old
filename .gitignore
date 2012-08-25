@@ -1,6 +1,7 @@
 # Vim related
 # Ignore all files in the undodir
 vim/undodir/*
+vim/.netrwhist
 
 # Ignore vim/doc/tags
 vim/doc/tags
