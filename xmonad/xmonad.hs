@@ -129,7 +129,7 @@ manageHook' = (composeAll . concat $
         myCinema  = ["Vlc"]
         myMusic	  = ["Rhythmbox","Spotify"]
         myChat	  = ["Pidgin","Buddy List"]
-        myOther	  = ["Gimp"]
+        myOther	  = ["!Gimp"]
         myShed    = []
         myDev	  = ["gnome-terminal"]
         myVim	  = [] 
@@ -154,7 +154,7 @@ customLayout2 = smartBorders $ avoidStruts $ toggleLayouts Full  $ avoidStruts $
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
  
-theatreLayout = fullscreenFull $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
+theatreLayout = smartBorders $ avoidStruts $ toggleLayouts Full $ tiled ||| Mirror tiled ||| Full ||| simpleFloat 
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
  
