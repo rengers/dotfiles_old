@@ -13,8 +13,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=200000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -115,6 +115,8 @@ alias dsp_='cd /home/ross/Documents/UCT\ 2012/EEE4001F\ -\ Digital\ Signal\ Proc
 alias hub_='cd /home/ross/Documents/UCT\ 2012/HUB4045F\ -\ Medical\ Image\ Processing/'
 alias maint_='cd /home/ross/Documents/UCT\ 2012/MEC4054F\ -\ Maintanence/'
 alias broadb_='cd /home/ross/Documents/UCT\ 2012/EEE4087F\ -\ Mobile\ Broadband/'
+alias thesis='cd /home/ross/Documents/UCT\ 2012/Thesis/'
+alias thesisc='cd /home/ross/Documents/UCT\ 2012/Thesis/Rover/code/rover'
 
 ###
 # Shortcuts to access git
