@@ -71,7 +71,7 @@ myBorderWidth     = 2
 main = do
     dzenLeftBar <- spawnPipe myXmonadBar
     dzenRightBar <- spawnPipe myStatusBar
-    xmonad $ gnomeConfig
+    xmonad $ defaultConfig
         { manageHook = manageHook' 
 --        , layoutHook = avoidStruts $ layoutHook defaultConfig
         , layoutHook = layoutHook'
