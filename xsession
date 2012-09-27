@@ -15,6 +15,9 @@ xscreensaver -no-splash &
 # Start some apps
 chromium-browser & 
 
+# Start spotify notify
+./Downloads/spotify-notify/spotify-notify -s &
+
 # Run xmonad
 exec xmonad 
 
