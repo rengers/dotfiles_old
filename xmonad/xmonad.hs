@@ -3,7 +3,6 @@ import XMonad.Util.Run --(spawnPipe)
 import XMonad.Util.EZConfig --(additionalKeys)
 import System.IO
 import XMonad.Config.Gnome
-
 import XMonad.Actions.CycleWS
 
 -- Import for hooks
@@ -72,7 +71,7 @@ myBorderWidth     = 2
 main = do
     dzenLeftBar <- spawnPipe myXmonadBar
     dzenRightBar <- spawnPipe myStatusBar
-    xmonad $ defaultConfig
+    xmonad $ gnomeConfig
         { manageHook = manageHook' 
 --        , layoutHook = avoidStruts $ layoutHook defaultConfig
         , layoutHook = layoutHook'
