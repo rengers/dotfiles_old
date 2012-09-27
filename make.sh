@@ -13,6 +13,7 @@ files="bashrc bash_logout profile vimrc vim xmonad xsession"    # list of files/
 ##########
 
 # create dotfiles_old in homedir
+cd ~
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
 echo "...done"
