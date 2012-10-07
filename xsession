@@ -4,7 +4,7 @@
 xrdb -merge .Xresources
 
 # Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 150 --tint 0x2C2E2F --transparent true --height 24 &
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 200 --tint 0x2C2E2F --transparent true --height 24 &
 
 # Set the background color
 #xsetroot -solid midnightblue
@@ -18,7 +18,8 @@ chromium-browser &
 # Start spotify notify
 ./Downloads/spotify-notify/spotify-notify -s &
 
+# gnome sound applet
+gnome-sound-applet & 
+
 # Run xmonad
-exec xmonad 
-
-
+ssh-agent xmonad 
