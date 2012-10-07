@@ -41,7 +41,7 @@ import qualified Data.Map as M
 
 -- Dzen/conky for bars
 myXmonadBar = "dzen2 -x '0' -y '0' -h '24' -w '920' -ta '1' -fg '#FFFFFF' -bg '#1B1D1E' -fn 'Bitstream Vera Mono-10'"
-myStatusBar = "conky -c /home/ross/.xmonad/.conky_dzen | dzen2 -x '770' -w '1000' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0' -fn 'Bitstream Vera Mono-10'"
+myStatusBar = "conky -c /home/ross/.xmonad/.conky_dzen | dzen2 -x '770' -w '950' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0' -fn 'Bitstream Vera Mono-10'"
 myBitmapsDir = "/home/ross/.xmonad/dzen2"
 
 --Workspace names
@@ -71,6 +71,7 @@ myBorderWidth     = 2
 main = do
     dzenLeftBar <- spawnPipe myXmonadBar
     dzenRightBar <- spawnPipe myStatusBar
+    spawnPipe "/home/ross/./init_tunnels start"
     xmonad $ defaultConfig
         { manageHook = manageHook' 
 --        , layoutHook = avoidStruts $ layoutHook defaultConfig
@@ -122,7 +123,7 @@ manageHook' = (composeAll . concat $
         name      = stringProperty "WM_NAME"
  
         -- classnames
-        myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor"]
+        myFloats  = ["MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor","Artha"]
         myWebs    = ["Firefox","Google-chrome"]
         myTheatre = ["Boxee","Trine"]
         myCinema  = ["Vlc"]
