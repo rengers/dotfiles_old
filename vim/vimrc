@@ -160,7 +160,7 @@ endif
 
 "Ross font
 "set guifont=ProggyCleanTT\ 12
-set gfn=Bitstream\ Vera\ Sans\ Mono\ 9
+set gfn=Bitstream\ Vera\ Sans\ Mono\ 10
 
 
 if has("gui_running")
@@ -215,9 +215,9 @@ endtry
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set smarttab
 
 set lbr
