@@ -4,7 +4,11 @@
 xrdb -merge .Xresources
 
 # Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 200 --tint 0x2C2E2F --transparent true --height 24 &
+trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --widthtype pixel --width 200 --tint 0x2C2E2F --transparent true --height 24 &
+
+# Setup keyboard qwerty and dvorak
+setxkbmap -option "" -layout "us,us(dvp)" -option grp:alt_space_toggle -option caps:swapescape
+
 
 # Set the background color
 #xsetroot -solid midnightblue
