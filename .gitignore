@@ -3,6 +3,9 @@
 vim/undodir/*
 vim/.netrwhist
 
+# Ignore yankring file
+yankring_history*
+
 # Ignore vim/doc/tags
 vim/doc/tags
 
