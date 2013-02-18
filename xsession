@@ -17,7 +17,7 @@ setxkbmap -option "" -layout "us,us(dvp)" -option grp:alt_space_toggle -option c
 xscreensaver -no-splash &
 
 # Start some apps
-chromium-browser & 
+firefox & 
 
 # Start spotify notify
 ./Downloads/spotify-notify/spotify-notify -s &
