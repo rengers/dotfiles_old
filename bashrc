@@ -143,3 +143,7 @@ alias ssh='ssh-add -l || ssh-add && ssh' # Add ssh-keys to agent on demand
 
 alias kagent="kill -9 $SSH_AGENT_PID"
 
+# Load rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
