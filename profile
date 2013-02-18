@@ -21,20 +21,3 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-
-# SSH-Agent config
-# If no SSH agent is already running, start one now. Re-use sockets so we never
-# have to start more than one session.
-export SSH_AUTH_SOCK=/home/ross/.ssh-socket
-
-ssh-add -l >/dev/null 2>&1
-if [ $? = 2 ]; then
-   # No ssh-agent running
-   rm -rf $SSH_AUTH_SOCK
-   ssh-agent -a $SSH_AUTH_SOCK -t 3300 >/tmp/.ssh-script
-   chmod +x /tmp/.ssh-script
-   source /tmp/.ssh-script > /dev/null
-   echo $SSH_AGENT_PID > /home/ross/.ssh-agent-pid
-   rm /tmp/.ssh-script
-   echo "Agent started"
-fi
