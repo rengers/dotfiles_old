@@ -161,7 +161,7 @@ endif
 "Ross font
 "set guifont=ProggyCleanTT\ 12
 "set gfn=Bitstream\ Vera\ Sans\ Mono\ 10
-set gfn=Monaco\ 10
+set gfn=Monaco\ 9
 
 
 if has("gui_running")
@@ -173,7 +173,8 @@ if has("gui_running")
   set background=dark
   set guitablabel=%M\ %t
   "colorscheme peaksea
-  colorscheme skittles_dark
+  colorscheme solarized 
+  set gfn=Menlo\ for\ Powerline\ 9
   set nonu
 else
   "colorscheme zellner
@@ -451,6 +452,21 @@ set statusline+=%{GitBranch()}\
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+set rtp+=/usr/local/lib/python2.7/dist-packages/Powerline-beta-py2.7.egg/powerline/bindings/vim
+
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+" Hide the text below status line
+set noshowmode
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
