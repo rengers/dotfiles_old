@@ -160,7 +160,8 @@ endif
 
 "Ross font
 "set guifont=ProggyCleanTT\ 12
-set gfn=Bitstream\ Vera\ Sans\ Mono\ 10
+"set gfn=Bitstream\ Vera\ Sans\ Mono\ 10
+set gfn=Monaco\ 10
 
 
 if has("gui_running")
